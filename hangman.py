@@ -6,9 +6,10 @@ words_file = open('words.txt', 'r')
 words = words_file.read().split()
 
 search_word = random.choice(words)
-print(search_word)
+#print(search_word)
 lives_count = 6
 guessed_word = '_'*len(search_word)
+checked_letters = []
 
 print(f"You need to guess this word: {guessed_word}")
 
@@ -43,7 +44,9 @@ def check_win():
     
 while check_win() == 0 and check_live() == 1:
     print(f"Lives left: {lives_count}")
+    print(f"Letters checked: {checked_letters}")
     x = input("Guess the letter: ")
+    checked_letters.append(x)
     guessed_word = guess(x)
     print(f"You need to guess this word: {guessed_word}")
 
