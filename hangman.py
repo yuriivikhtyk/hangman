@@ -5,9 +5,63 @@ print("Welcome to the Hangman App!")
 words_file = open('words.txt', 'r')
 words = words_file.read().split()
 
+stages = [
+    '''
+     +-----+
+     |     |
+     0     |
+    /|\    |
+    / \    |
+           |
+============
+''','''
+     +-----+
+     |     |
+     0     |
+    /|\    |
+    /      |
+           |
+============
+''','''
+     +-----+
+     |     |
+     0     |
+    /|\    |
+           |
+           |
+============
+''','''
+     +-----+
+     |     |
+     0     |
+    /|     |
+           |
+           |
+============
+''','''
+     +-----+
+     |     |
+     0     |
+     |     |
+           |
+           |
+============
+''','''
+     +-----+
+     |     |
+     0     |
+           |
+           |
+           |
+============
+''','''
+
+'''
+]
+
 search_word = random.choice(words)
 #print(search_word)
-lives_count = 6
+lives_count = 7
 guessed_word = '_'*len(search_word)
 checked_letters = []
 
@@ -43,6 +97,7 @@ def check_win():
         return(1)
     
 while check_win() == 0 and check_live() == 1:
+    print(stages[lives_count - 1])
     print(f"Lives left: {lives_count}")
     print(f"Letters checked: {checked_letters}")
     x = input("Guess the letter: ")
